@@ -9,18 +9,21 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 //import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 //import org.openqa.selenium.phantomjs.PhantomJSDriver;
-
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserDriverFactory {
+
+	public Logger log = LoggerFactory.getLogger("BrowserDriverFactory.class");
+	
 	private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	private String browser;
-	public Logger log; //= LoggerFactory.getLogger("BrowserDriverFactory.class");
 
 	public BrowserDriverFactory(String browser, Logger log) {
 		this.browser = browser.toLowerCase();
@@ -35,7 +38,19 @@ public class BrowserDriverFactory {
 		case "chrome":
 			//System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
-			driver.set(new ChromeDriver());
+			
+			String downloadFilepath = "C:\\Users\\NGOPISHETT\\git\\asqatoolkit\\test-output\\downloads\\";
+			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+			chromePrefs.put("profile.default_content_settings.popups", 0);
+			chromePrefs.put("download.prompt_for_download", false);
+			chromePrefs.put("download.default_directory", downloadFilepath);
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.setExperimentalOption("prefs", chromePrefs);
+			DesiredCapabilities cap = DesiredCapabilities.chrome();
+			cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+			
+			driver.set(new ChromeDriver(chromeOptions));
 			break;
 
 		case "firefox":
@@ -47,9 +62,12 @@ public class BrowserDriverFactory {
 		case "chromeheadless":
 			//System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
-			ChromeOptions chromeOptions = new ChromeOptions();
-			chromeOptions.addArguments("--headless");
-			driver.set(new ChromeDriver(chromeOptions));
+			ChromeOptions chromeOption = new ChromeOptions();
+			Map<String, Object> pref = new HashMap<String, Object>();
+			pref.put("download.prompt_for_download", false);
+			chromeOption.setExperimentalOption("prefs", pref);
+			chromeOption.addArguments("--headless");
+			driver.set(new ChromeDriver(chromeOption));
 			break;
 
 		case "firefoxheadless":

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-04-23T18:06:29 IST" name="Default suite" finished-at="2021-04-23T18:08:44 IST" duration-ms="135493">
+    <groups>
+    </groups>
+    <test started-at="2021-04-23T18:06:29 IST" name="Default test" finished-at="2021-04-23T18:08:44 IST" duration-ms="135493">
+      <class name="automationTests.ReportsPageTests">
+        <test-method is-config="true" signature="getProperty()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:06:29 IST" name="getProperty" finished-at="2021-04-23T18:06:29 IST" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getProperty -->
+        <test-method is-config="true" signature="initialise(java.lang.String, org.testng.ITestContext, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:06:29 IST" name="initialise" finished-at="2021-04-23T18:06:36 IST" duration-ms="6804" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@58c1da09]]>
+              </value>
+            </param>
+            <param index="2">
+              <value is-null="true"/>
+            </param>
+            <param index="3">
+              <value is-null="true"/>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[public void automationTests.ReportsPageTests.openReportsFromUtilitiesMenuPage() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialise -->
+        <test-method is-config="true" signature="init()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:06:36 IST" name="init" finished-at="2021-04-23T18:06:47 IST" duration-ms="11637" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="openReportsFromUtilitiesMenuPage()[pri:1, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:06:47 IST" name="openReportsFromUtilitiesMenuPage" finished-at="2021-04-23T18:06:55 IST" duration-ms="7439" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openReportsFromUtilitiesMenuPage -->
+        <test-method is-config="true" signature="close()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:06:55 IST" name="close" finished-at="2021-04-23T18:07:02 IST" duration-ms="6795" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+        <test-method is-config="true" signature="quitBrowser()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:02 IST" name="quitBrowser" finished-at="2021-04-23T18:07:02 IST" duration-ms="783" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitBrowser -->
+        <test-method is-config="true" signature="initialise(java.lang.String, org.testng.ITestContext, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:02 IST" name="initialise" finished-at="2021-04-23T18:07:08 IST" duration-ms="5738" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@58c1da09]]>
+              </value>
+            </param>
+            <param index="2">
+              <value is-null="true"/>
+            </param>
+            <param index="3">
+              <value is-null="true"/>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[public void automationTests.ReportsPageTests.clickStandardTransactionExportReport() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialise -->
+        <test-method is-config="true" signature="getProperty()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:02 IST" name="getProperty" finished-at="2021-04-23T18:07:02 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getProperty -->
+        <test-method is-config="true" signature="init()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:08 IST" name="init" finished-at="2021-04-23T18:07:19 IST" duration-ms="10654" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="clickStandardTransactionExportReport()[pri:2, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:19 IST" name="clickStandardTransactionExportReport" finished-at="2021-04-23T18:07:34 IST" duration-ms="15001" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickStandardTransactionExportReport -->
+        <test-method is-config="true" signature="close()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:34 IST" name="close" finished-at="2021-04-23T18:07:41 IST" duration-ms="6927" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+        <test-method is-config="true" signature="quitBrowser()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:41 IST" name="quitBrowser" finished-at="2021-04-23T18:07:41 IST" duration-ms="730" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitBrowser -->
+        <test-method is-config="true" signature="getProperty()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:41 IST" name="getProperty" finished-at="2021-04-23T18:07:41 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getProperty -->
+        <test-method is-config="true" signature="initialise(java.lang.String, org.testng.ITestContext, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:41 IST" name="initialise" finished-at="2021-04-23T18:07:47 IST" duration-ms="5708" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@58c1da09]]>
+              </value>
+            </param>
+            <param index="2">
+              <value is-null="true"/>
+            </param>
+            <param index="3">
+              <value is-null="true"/>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[public void automationTests.ReportsPageTests.filterStandardTransactionExportReport() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialise -->
+        <test-method is-config="true" signature="init()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:47 IST" name="init" finished-at="2021-04-23T18:07:58 IST" duration-ms="11085" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="filterStandardTransactionExportReport()[pri:3, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:07:58 IST" name="filterStandardTransactionExportReport" finished-at="2021-04-23T18:08:37 IST" duration-ms="38531" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- filterStandardTransactionExportReport -->
+        <test-method is-config="true" signature="close()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:08:37 IST" name="close" finished-at="2021-04-23T18:08:44 IST" duration-ms="6760" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+        <test-method is-config="true" signature="quitBrowser()[pri:0, instance:automationTests.ReportsPageTests@20ccf40b]" started-at="2021-04-23T18:08:44 IST" name="quitBrowser" finished-at="2021-04-23T18:08:44 IST" duration-ms="830" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitBrowser -->
+      </class> <!-- automationTests.ReportsPageTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

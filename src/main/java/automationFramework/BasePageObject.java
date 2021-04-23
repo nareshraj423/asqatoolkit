@@ -12,6 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.DoubleClickAction;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,10 +20,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import automationFramework.Driver.Driver;
+import automationFramework.NavigationBar.NavigateBar;
 import util.TestUtilities;
 
 public class BasePageObject extends TestUtilities {
-	public Logger log = LoggerFactory.getLogger("BasePageObject.class");
+	protected static Logger log = LoggerFactory.getLogger("BasePageObject.class");
 
 	/** Open page with given URL */
 	protected void openUrl(String url) {
@@ -30,7 +32,7 @@ public class BasePageObject extends TestUtilities {
 	}
 	
 	/** Find element using given locator */
-	protected WebElement find(By locator) {
+	protected static WebElement find(By locator) {
 		return Driver.instance.findElement(locator);
 	}
 
@@ -39,16 +41,34 @@ public class BasePageObject extends TestUtilities {
 		return Driver.instance.findElements(locator);
 	}
 
-	/** Click on element with given locator when its visible */
-	protected void click(By locator) {
+	/** Click on element with given locator after hovering and when its visible */
+	protected static void click(By locator) {
 		waitForVisibilityOf(locator, 5);
+		WebElement element = find(locator);
+		hoverOverElement(element);
+		sleep(1000);
 		find(locator).click();
+		sleep(1000);
+	}
+	
+	/** Click on element with given locator after hovering and when its visible */
+	protected static void doubleClick(By locator) {
+		waitForVisibilityOf(locator, 5);
+		WebElement element = find(locator);
+		hoverOverElement(element);
+		sleep(1000);
+		find(locator).click();
+		find(locator).click();
+		sleep(1000);
 	}
 
-	/** Type given text into element with given locator */
-	protected void type(String text, By locator) {
+	/** Type given text into element with given locator after hovering */
+	protected static void type(String text, By locator) {
 		waitForVisibilityOf(locator, 5);
+		WebElement element = find(locator);
+		hoverOverElement(element);
 		find(locator).sendKeys(text);
+		sleep(1000);
 	}
 
 	/** Get URL of current page from browser */
@@ -69,7 +89,7 @@ public class BasePageObject extends TestUtilities {
 	/**
 	 * Wait for specific ExpectedCondition for the given amount of time in seconds
 	 */
-	private void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds) {
+	private static void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds) {
 		timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : 30;
 		WebDriverWait wait = new WebDriverWait(Driver.instance, timeOutInSeconds);
 		wait.until(condition);
@@ -96,7 +116,7 @@ public class BasePageObject extends TestUtilities {
 	 * Wait for given number of seconds for element with given locator to be visible
 	 * on the page
 	 */
-	protected void waitForVisibilityOf(By locator, Integer... timeOutInSeconds) {
+	protected static void waitForVisibilityOf(By locator, Integer... timeOutInSeconds) {
 		int attempts = 0;
 		while (attempts < 2) {
 			try {
@@ -140,15 +160,18 @@ public class BasePageObject extends TestUtilities {
 	}
 
 	/** Press Key on locator */
-	protected void pressKey(By locator, Keys key) {
+	protected static void pressKey(By locator, Keys key) {
+		WebElement element = find(locator);
+		hoverOverElement(element);
 		find(locator).sendKeys(key);
 	}
 
 	/** Press Key using Actions class */
-	public void pressKeyWithActions(Keys key) {
+	public static void pressKeyWithActions(Keys key) {
 		log.info("Pressing " + key.name() + " using Actions class");
 		Actions action = new Actions(Driver.instance);
 		action.sendKeys(key).build().perform();
+		sleep(1000);
 	}
 
 	/** Perform scroll to the bottom */
@@ -185,9 +208,19 @@ public class BasePageObject extends TestUtilities {
 	}
 
 	/** Perform mouse hover over element */
-	protected void hoverOverElement(WebElement element) {
+	protected static void hoverOverElement(WebElement element) {
 		Actions action = new Actions(Driver.instance);
 		action.moveToElement(element).build().perform();
+	}
+	
+	/** combo-box search */
+	public static void search(By comboboxLocator, String clientName) {
+		log.info("Executing search with client Name or ID [" + clientName + "]");
+		//pressKey(comboboxLocator, Keys.CLEAR);
+		type(clientName, comboboxLocator);
+		//pressKeyWithActions(Keys.DOWN);
+		takeScreenshot("Client: " + clientName + "displayed");
+		pressKeyWithActions(Keys.ENTER);
 	}
 
 	/** Add cookie */

@@ -10,37 +10,36 @@ import org.slf4j.LoggerFactory;
 import automationFramework.NavigationBar.NavigateBar;
 
 public class ComboBoxPage extends NavigateBar {
-	Logger log = LoggerFactory.getLogger("ComboBoxPage.class");
+	static Logger log = LoggerFactory.getLogger("ComboBoxPage.class");
 
-	private By combobox = By.xpath("//input[@role='combobox' and @type='text']");
+	private static By comboboxLocator = By.xpath("//input[@role='combobox' and @type='text']");
 	//private By logOutButton = By.xpath("//a[@id='logoutlink']");
 	//private By message = By.cssSelector("#pagename");
 
-	/** Verification if combobox box is visible on the page */
+	/** Verification if combo-box box is visible on the page */
 	public boolean isComboBoxVisible() {
-		return find(combobox).isDisplayed();
+		return find(comboboxLocator).isDisplayed();
 	}
 	
-	/** Execute log in 
-	 * @throws InterruptedException */
-	public NavigateBar search(String clientName) throws Exception {
+	/** Execute search */
+	public static NavigateBar search(String clientName) {
 		log.info("Executing search with client Name or ID [" + clientName + "]");
-		pressKey(combobox, Keys.CLEAR);
-		type(clientName, combobox);
+		pressKey(comboboxLocator, Keys.CLEAR);
+		type(clientName, comboboxLocator);
+		//pressKeyWithActions(Keys.DOWN);
 		takeScreenshot("Client: " + clientName + "displayed");
 		pressKeyWithActions(Keys.ENTER);
-		Thread.sleep(1000);
 		return new NavigateBar();
 	}
 
-	public ComboBoxPage negativeSearch(String clientName) throws Exception {
+	public NavigateBar negativeSearch(String clientName) throws Exception {
 		log.info("Executing search with client Name or ID [" + clientName + "]");
-		pressKey(combobox, Keys.CLEAR);
-		type(clientName, combobox);
+		pressKey(comboboxLocator, Keys.CLEAR);
+		type(clientName, comboboxLocator);
 		pressKeyWithActions(Keys.ENTER);
 		Thread.sleep(1000);
 		takeScreenshot("SecureAreaPage opened");
-		return new ComboBoxPage();
+		return this;
 	}
 
 	/** Wait for error message to be visible on the page */
@@ -58,27 +57,27 @@ public class ComboBoxPage extends NavigateBar {
 	}
 
 	/** This method selects given option from combobox */
-	public ComboBoxPage selectOption(int i) {
-		log.info("Selecting option " + i + " from dropdown");
-		WebElement dropdownElement = find(combobox);
+	public ComboBoxPage selectOption(String text) {
+		log.info("Selecting option " + text + " from dropdown");
+		WebElement dropdownElement = find(comboboxLocator);
 		Select dropdown = new Select(dropdownElement);
 
 		// There are three ways to use Select class
 		// #1
-		 dropdown.selectByIndex(i);
+		//dropdown.selectByIndex(i);
 
 		// #2
 		//dropdown.selectByValue("" + i);
 
 		// #3
-		//dropdown.selectByVisibleText("Option " + i);
+		dropdown.selectByVisibleText("text");
 		 
-		 return new ComboBoxPage();
+		 return this;
 	}
 
 	/** This method returns selected option in dropdown as a string */
 	public String getSelectedOption() {
-		WebElement dropdownElement = find(combobox);
+		WebElement dropdownElement = find(comboboxLocator);
 		Select dropdown = new Select(dropdownElement);
 		String selectedOption = dropdown.getFirstSelectedOption().getText();
 		log.info(selectedOption + " is selected in dropdown");

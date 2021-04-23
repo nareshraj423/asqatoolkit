@@ -22,16 +22,16 @@ import org.testng.annotations.Test;
 import util.ConfigReader;
 
 public class Driver {
-	Logger log; //= LoggerFactory.getLogger("Driver.class");
+	Logger log = LoggerFactory.getLogger("Driver.class");
 
 	private ConfigReader configReader;
 	Properties prop;
 	
 	public static WebDriver instance;
-	//public static Logger log;
-	public String testSuiteName;
-	public String testName;
-	public String testMethodName;
+
+	public static String testSuiteName;
+	public static String testName;
+	public static String testMethodName;
 	
 //	private Driver(){
 //	}

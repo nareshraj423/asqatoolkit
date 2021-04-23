@@ -21,7 +21,7 @@ public class TestUtilities extends Driver {
 	Logger log = LoggerFactory.getLogger("TestUtilities.class");
 
 	// STATIC SLEEP 
-	protected void sleep(long millis) {
+	protected static void sleep(long millis) {
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
@@ -39,7 +39,7 @@ public class TestUtilities extends Driver {
 	}
 
 	/** Take screenshot */
-	protected void takeScreenshot(String fileName) {
+	protected static void takeScreenshot(String fileName) {
 		File scrFile = ((TakesScreenshot) Driver.instance).getScreenshotAs(OutputType.FILE);
 		String path = System.getProperty("user.dir") 
 				+ File.separator + "test-output" 
@@ -56,6 +56,26 @@ public class TestUtilities extends Driver {
 			e.printStackTrace();
 		}
 	}
+	
+	/** Download */
+	protected static void download(String fileName) {
+		File scrFile = new File("C:\\\\Users\\\\NGOPISHETT\\\\git\\\\asqatoolkit\\\\test-output\\\\downloads");
+		String path = System.getProperty("user.dir") 
+				+ File.separator + "test-output" 
+				+ File.separator + "downloads"
+				+ File.separator + "pdf"
+				+ File.separator + getTodaysDate() 
+				+ File.separator + testSuiteName 
+				+ File.separator + testName
+				+ File.separator + testMethodName 
+				+ File.separator + getSystemTime() 
+				+ "." + fileName;
+		try {
+			FileUtils.copyFile(scrFile, new File(path));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/** Todays date in yyyyMMdd format */
 	private static String getTodaysDate() {
@@ -63,7 +83,7 @@ public class TestUtilities extends Driver {
 	}
 
 	/** Current time in HHmmssSSS */
-	private String getSystemTime() {
+	private static String getSystemTime() {
 		return (new SimpleDateFormat("HHmmssSSS").format(new Date()));
 	}
 

@@ -21,15 +21,10 @@ public class LoginPage extends Pages {
 	private By passwordLocator = By.xpath("//input[@id='password']");
 	private By logInButtonLocator = By.xpath("//button[@id='login-btn']");
 	private By errorMessageLocator = By.id("flash");
-	
-//	public LoginPage(WebDriver driver, Logger log) {
-//		super(driver, log);
-//	}
 
 
-	/** Open page with it's url 
-	 * @throws InterruptedException */
-	public LoginPage open() throws InterruptedException {
+	/** Open page with it's url */
+	public LoginPage open() throws Exception {
 		log.info("Opening page: " + pageUrl);
 		openUrl(pageUrl);
 		takeScreenshot("LoginPage opened");
@@ -37,14 +32,13 @@ public class LoginPage extends Pages {
 		return new LoginPage();
 	}
 
-	/** Execute log in 
-	 * @throws InterruptedException */
-	public SecureAreaPage logIn(String username, String password) throws InterruptedException {
+	/** Execute log in */
+	public SecureAreaPage logIn(String username, String password) throws Exception {
 		log.info("Executing LogIn with username [" + username + "] and password [" + password + "]");
 		type(username, usernameLocator);
 		type(password, passwordLocator);
 		click(logInButtonLocator);
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		takeScreenshot("SecureAreaPage opened");
 		return new SecureAreaPage();
 	}
@@ -66,6 +60,7 @@ public class LoginPage extends Pages {
 		return find(message).getText();
 	}
 
+	/** Return text from error message */
 	public String getErrorMessageText() {
 		return find(errorMessageLocator).getText();
 	}
